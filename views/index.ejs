@@ -1,0 +1,35 @@
+<% layout('layout') %>
+  <h1>To Do Items</h1>
+  <hr>
+  <div class="input-group col-md-6">
+    <span class="input-group-addon" id="basic-addon1">標題</span>
+    <input type="text" class="title form-control" name="title" aria-describedby="basic-addon1">
+  </div>
+  <br />
+  <div class="input-group col-md-6">
+    <span class="input-group-addon" id="basic-addon1">執行時間</span>
+    <input class="flatpickr form-control" data-enabletime=true aria-describedby="basic-addon1">
+  </div>
+  <input type="hidden" id="dtp_input1" value="" /><br/>
+  <textarea class="content" name="content" style="width: 100%" rows="5">
+  </textarea>
+  <br/><br/>
+  <div style="text-align:right">
+    <div style="display: inline-block;">
+      <button id="authorize_button" class="btn btn-primary">Add to Calendar</button>
+    </div>
+    <div style="display: inline-block;">
+      <button class="send btn btn-primary">Save</button>
+    </div>
+  </div>
+  <br/>
+    <ul class="list list-group">
+      <% for(item in todolist){%>
+        <li class="list-group-item" style="overflow: auto"><a href="user/<%- item%>">標題：
+        <%- todolist[item].title%><br/><span>建立於：<%- todolist[item].time%></span></a>
+        <input data-id="<%- item %>" type="button" class="btn btn-default pull-right" value="Delete">
+        </li>
+      <% }%>
+    </ul>
+  <script async defer src="https://apis.google.com/js/api.js"></script>
+  <script src="main.js"></script>
